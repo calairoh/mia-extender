@@ -1,0 +1,31 @@
+{
+  "name": "mec",
+  "version": "1.0.0",
+  "description": "The runner for Mia-Platform IDP extention registration",
+  "main": "index.js",
+  "bin": {
+    "interactive-cli": "./main.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calairoh/mia-extender.git"
+  },
+  "author": "davide.calabro@mia-platform.eu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calairoh/mia-extender/issues"
+  },
+  "homepage": "https://github.com/calairoh/mia-extender#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "commander": "^8.0.0",
+    "inquirer": "^8.0.0"
+  }
+}
