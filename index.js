@@ -1,7 +1,7 @@
 const { Command } = require('commander')
 const program = new Command()
 
-const { registerQuestions, register_extension, get_extension, retrieveQuestions } = require('./Extender')
+const { registerQuestions, register_extension, get_extension, retrieveQuestions, activateQuestions, activate_extension } = require('./Extender')
 
 program
     .name('mec')
@@ -26,6 +26,17 @@ program
         const response = await get_extension(basePath, tenantId)
         console.log(response)
     })
+
+program
+    .command('activate')
+    .description('Activate tenant extension')
+    .action(async () => {
+        const questions = await activateQuestions()
+        const { basePath, tenantId, extension } = questions
+        const response = await activate_extension(basePath, tenantId, extension)
+        console.log(response)
+    })
+
 
 
 program.parse(process.argv)
