@@ -123,7 +123,7 @@ async function registerQuestions() {
             type: 'list',
             name: 'routes[0].locationId',
             message: 'Enter the location ID:',
-            choices: ['company', 'project']
+            choices: ['tenant', 'project', 'runtime']
         },
         {
             type: 'input',
