@@ -53,6 +53,24 @@ async function activate_extension(basePath, tenantId, extensionId) {
     }
 }
 
+async function delete_extension(basePath, tenantId, extensionId) {
+    const url = path.join(basePath, '/api/extensibility/tenants/', tenantId, '/extensions', extensionId)
+
+    const opts = {
+        headers: {
+            Cookie: process.env.COOKIE,
+        }
+    }
+
+    try {
+        const response = await axios.delete(url, {}, opts)    
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 async function registerQuestions() {
     const questions = [
         {
@@ -152,7 +170,7 @@ async function retrieveQuestions() {
     return await inquirer.prompt(questions)
 }
 
-async function activateQuestions() {
+async function selectExtensionQuestions() {
     const questions = [
         {
             type: 'input',
@@ -173,7 +191,7 @@ async function activateQuestions() {
         {
             type: 'list',
             name: 'extension',
-            message: 'Select the identifier of the extension to active:',
+            message: 'Select the identifier of the extension:',
             choices: extensions.map(ext => ext.extensionId)
         }
     ]
@@ -188,5 +206,6 @@ module.exports = {
     get_extension,
     registerQuestions,
     retrieveQuestions,
-    activateQuestions
+    delete_extension,
+    selectExtensionQuestions
 }
